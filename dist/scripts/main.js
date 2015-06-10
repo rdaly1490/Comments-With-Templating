@@ -31,26 +31,31 @@ $(document).ready(function() {
 		var displayPost = imgPostBuilder(imgModel.attributes);
 		$("#pics-container").append(displayPost);
 
-			$(".to-comment").on("click", function(e) { //one is like on but won't add multiple event listeners, only one
+			$(".to-comment").on("click", function(e) {
 				e.preventDefault();
 				$(this).parent().siblings(".inactive").removeClass("inactive").addClass("active well");
+				$(this).parent().siblings(".active").children("form").children(".submit-comment").attr("id", "extra");
 
 
-				$(".submit-comment").on("click", function(e) {
+				$("#extra").on("click", function(e) {
 					e.preventDefault();
-					var newComment = new Comment({
-						content: $(".enter-comment").val(),
-						imgId: imgModel.get("_id")
-					});
+					console.log("good");
+
+						var newComment = new Comment({
+							content: $(this).siblings(".enter-comment").val(),
+							imgId: imgModel.get("_id")
+						});
 					// newComment.save();
 					console.log(newComment);
 				});
-
-				commentList.on("add", function(commentModel) {
-					var displayComment = commentBuilder(commentModel.attributes);
-					console.log(displayComment);
-					$(".history").append(displayComment);
+					commentList.on("add", function(commentModel) {
+						console.log(commentModel);
+						var displayComment = commentBuilder(commentModel.attributes);
+						console.log(displayComment);
+						$(this).siblings(".history").append(displayComment);
 				});
+
+
 			});
 
 			$(".cancel-comment").on("click", function(e) {
