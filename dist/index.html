@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HW 22 instagram</title>
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="styles/style.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid" id="slidedown-container">
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="slidedown">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				</button>
+				<div class="collapse" id="collapseExample">
+					<div class="well">
+						<form class="col-xs-12 col-sm-12 col-md-12" id="img-form">
+							<h5>URL</h5>
+							<input type="text" id="url" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+							<h5>Caption</h5>
+							<input type="text" id="img-caption" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+							<button type="submit" id="submit-img"><span class="glyphicon glyphicon-camera"></span> Add Image</button>
+							<button type="submit" id="cancel">Cancel</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid well col-xs-12 col-sm-12 col-md-8 col-md-offset-2" id="pics-container">
+			<div class="col-xs-12" id="pics">
+			</div>
+		</div>
+
+		<script type="text/template" id="post-template">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md -offset-1 post">
+				<img src="<%= imgUrl %>">
+				<div class="captions"><p><%= caption %></p>
+					<button class="to-comment"><span class="glyphicon glyphicon-envelope"></span></button>
+				</div>
+				<div class="comment inactive">
+					<form>
+						<textarea class="enter-comment"></textarea>
+						<button type="submit" class="submit-comment">Comment</button>
+						<button type="submit" class="cancel-comment">Cancel</button>
+						<div class="history"></div>
+					</form>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="comment-template">
+			<div class="post-comment"><p><%= comment %></p></div>
+		</script>
+
+		<script type="text/javascript" src="bower_components/validator-js/validator.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="bower_components/backbone/backbone-min.js"></script>
+		<script type="text/javascript" src="scripts/models/imagesModel.js"></script>
+		<script type="text/javascript" src="scripts/imagesCollection.js"></script>
+		<script type="text/javascript" src="scripts/models/commentModel.js"></script>
+		<script type="text/javascript" src="scripts/commentsCollection.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
+	</body>
+</html>
