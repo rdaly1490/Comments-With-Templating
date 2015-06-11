@@ -39,20 +39,28 @@ $(document).ready(function() {
 
 				$("#extra").on("click", function(e) {
 					e.preventDefault();
-					console.log("good");
+					// console.log("good");
 
-						var newComment = new Comment({
-							content: $(this).siblings(".enter-comment").val(),
-							imgId: imgModel.get("_id")
-						});
-					// newComment.save();
-					console.log(newComment);
+					var newComment = new Comment({
+						content: $(this).siblings(".enter-comment").val(),
+						imgId: imgModel.get("_id")
+					});
+
+					// console.log(newComment);
+					toAppend = $(this).siblings(".enter-comment").val();
+					console.log(toAppend);
+					cutUp = toAppend.substring(0, toAppend.length);
+					// console.log(cutUp);
+					
+					$(".history").append(cutUp);
+					newComment.save();
+
 				});
 					commentList.on("add", function(commentModel) {
 						console.log(commentModel);
 						var displayComment = commentBuilder(commentModel.attributes);
 						console.log(displayComment);
-						$(this).siblings(".history").append(displayComment);
+						(".history").append(displayComment);
 				});
 
 

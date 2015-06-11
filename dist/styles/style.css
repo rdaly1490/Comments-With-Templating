@@ -109,6 +109,11 @@ img {
 	border:1px solid gray;
 }
 
+.history {
+	height:100px;
+	width: 100%;
+}
+
 @media (min-width: 680px) {
 	.well h5 {
 		font-size: 18px;
